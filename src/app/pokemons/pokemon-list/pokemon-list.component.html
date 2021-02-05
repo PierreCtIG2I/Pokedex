@@ -1,0 +1,12 @@
+<p>Liste des Pokemons !</p>
+
+<ul>
+  <mat-list (scroll)="onScroll()">
+    <mat-list-item *ngFor="let pokemon of pokemons">
+      <img matListAvatar src="../assets/img/sprites/{{pokemon.id}}.png">
+      <a matLine routerLink="/pokemon/{{ pokemon.id }}">
+        <span>{{ pokemon.id }}. {{ pokemon.name }}</span>
+      </a>
+    </mat-list-item>
+  </mat-list>
+</ul>

@@ -1,0 +1,25 @@
+img {
+  height: 200px;
+  width: 200px;
+}
+
+span {
+  display: inline-block;
+  margin: 5px;
+}
+
+mat-grid-list {
+  width: 500px;
+  margin: auto;
+}
+
+.mat-list-base.inline-list {
+  display: flex;
+  align-items: baseline;
+}
+
+button.backToPokedex {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
