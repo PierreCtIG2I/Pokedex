@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Pokemon } from '../models/Pokemon';
 import { PokemonService } from '../pokemon.service';
 import { InfiniteScrollModule} from 'ngx-infinite-scroll';
@@ -12,7 +12,7 @@ export class PokemonListComponent implements OnInit {
 
   list: [];
   pokemons: Pokemon[];
-  infiniteScroll: InfiniteScrollModule;
+  @Input() infiniteScroll: InfiniteScrollModule;
 
   constructor(private pokemonService: PokemonService) { }
 
@@ -24,7 +24,7 @@ export class PokemonListComponent implements OnInit {
     this.pokemonService.getPokemons().subscribe(res => this.pokemons = res['data']);
   }
 
-  onScroll(): InfiniteScrollModule {
-    return this.infiniteScroll;
+  onScroll(): void {
+    console.log('J\'ai scrollé !');
   }
 }

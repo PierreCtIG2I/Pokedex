@@ -1,7 +1,8 @@
 <p>Liste des Pokemons !</p>
 
 <ul>
-  <mat-list (scroll)="onScroll()">
+  <mat-list infiniteScroll
+            (scrolled)="onScroll()">
     <mat-list-item *ngFor="let pokemon of pokemons">
       <img matListAvatar src="../assets/img/sprites/{{pokemon.id}}.png">
       <a matLine routerLink="/pokemon/{{ pokemon.id }}">
