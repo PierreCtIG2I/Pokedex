@@ -2,7 +2,6 @@ import {Injectable, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {LoginFormat} from '../models/LoginFormat';
-import {environment} from '../../../environments/environment';
 import {tap} from 'rxjs/operators';
 
 @Injectable({
@@ -23,10 +22,6 @@ export class LoginService {
 
   isConnected(): boolean {
     return this.loginResponse?.access_token != null;
-  }
-
-  getAccessToken(): string {
-    return this.loginResponse.access_token;
   }
 
   getRefreshToken(): string {
