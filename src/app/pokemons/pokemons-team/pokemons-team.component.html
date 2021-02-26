@@ -1,0 +1,11 @@
+<button class="team" [routerLink]="['/pokedex']" mat-button>POKEDEX</button>
+
+<ng-container *ngIf="isTeamEmpty() && (team | async) as myTeam;
+              else emptyTeam">
+  <mat-drawer-container class="example-container" autosize>
+    <pkx-pokemon-detail *ngFor="let pokemon of myTeam" [idPokemonReceived]="pokemon.id"></pkx-pokemon-detail>
+  </mat-drawer-container>
+</ng-container>
+<ng-template #emptyTeam>
+  <p>Vous n'avez pas de Pokemon dans votre équipe...</p>
+</ng-template>

@@ -1,0 +1,38 @@
+mat-sidenav-container.container {
+  color: white;
+  width: auto;
+  height: 100%;
+  margin: 0px 10px 10px 0px;
+  border: 1px solid #555;
+}
+
+pkx-pokemon-list {
+  overflow: hidden;
+  position: fixed;
+}
+
+mat-list-item:hover {
+  background: white;
+}
+
+div.container {
+  height: auto;
+  overflow: hidden;
+}
+
+
+button.pokedex {
+  margin-top: 1%;
+  padding: 7px;
+  border-color: dimgrey;
+  background-color: transparent;
+  color: white;
+  font-size: x-large;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button.pokedex:hover {
+  cursor: pointer;
+}

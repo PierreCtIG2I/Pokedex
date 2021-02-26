@@ -1,3 +1,9 @@
+mat-nav-list.search-list {
+  padding-top: 0px;
+  height: 91vh;
+  overflow: auto;
+}
+
 img {
   margin-right: 3px;
 }
@@ -6,5 +12,17 @@ a {
   text-decoration: none;
   color: whitesmoke;
   font-weight: bold;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-list-item {
+  background: lightslategray;
+}
+
+mat-list {
+  padding-top: 0px;
 }
 

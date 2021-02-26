@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { Pokemon } from './models/Pokemon';
+import { Pokemon } from '../models/Pokemon';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -14,25 +14,28 @@ export class PokemonService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getPokemons(): Observable<[]> {
-    const res = this.httpClient.get<[]>(this.pokemonsUrl)
-    .pipe(
-      catchError(this.handleError<[]>('getPokemons', []))
-    );
-    return res;
-  }
-
   getPokemon(id: number): Observable<Pokemon> {
     const url = this.pokemonsUrl + '/' + id;
     return this.httpClient.get<Pokemon>(url);
   }
 
-  // getPokemons(offset: number, limit: number {
-  // let params = new httpParams();
-  // if(offset) { params = params.set('offset', '${offset}');
-  // if(limit) { params = params.set('limit', '${limit}');
-  // return this.httpClient.get(this.pokemonsUrl, option: {params});
-  // }
+  getPokemons(offset?: number, limit?: number, search?: string): Observable<[any]> {
+    let params = new HttpParams();
+    if (offset) {
+      params = params.set('offset', `${offset}`);
+    }
+    if (limit) {
+      params = params.set('limit', `${limit}`);
+    }
+    if (search) {
+      params = params.set('search', `${search}`);
+    }
+    return this.httpClient.get<[any]>(this.pokemonsUrl, {params});
+  }
+
+  getPokemonsParam(params: HttpParams): Observable<[any]> {
+    return this.httpClient.get<[any]>(this.pokemonsUrl, {params});
+  }
 
   private handleError<T>(operation = 'operation', result?: T): (error: any) => Observable<T> {
     return (error: any): Observable<T> => {

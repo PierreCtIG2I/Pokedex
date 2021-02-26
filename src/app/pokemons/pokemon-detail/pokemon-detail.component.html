@@ -1,33 +1,35 @@
-<mat-grid-list cols="2" rowHeight="300px">
-  <mat-grid-tile [colspan]="1" [rowspan]="1">
-    <div>
-      <img mat-card-image src="assets/img/official-artwork/{{ pokemon.id }}.png">
-      <p style="text-align: center">No. {{ pokemon.id }}</p>
-    </div>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="1" [rowspan]="1">
-    <div>
-      <span>
-        <p>{{ pokemon.name }}</p>
-      </span>
-      <span>
-        <mat-icon (click)="pokemonCri.play()">play_circle_outline</mat-icon>
-      </span>
-        <audio #pokemonCri src="assets/audio/{{ pokemon.id }}.mp3"></audio>
-    <mat-chip-list ariaLabel="Fish Selection">
-      <mat-list class="inline-list">
-        <mat-list-item *ngFor="let type of pokemon.types">
-          <mat-chip>{{ type }}</mat-chip>
+<div class="container" *ngIf="pokemon">
+  <mat-grid-list cols="2" rowHeight="300px">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <div>
+        <img mat-card-image src="assets/img/official-artwork/{{ pokemon.id }}.png">
+        <p style="text-align: center">No. {{ pokemon.id | number : '3.0' }}</p>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-list>
+        <mat-list-item>
+            <span>
+              <p>{{ pokemon.name }}</p>
+            </span>
+            <mat-icon (click)="pokemonCri.play()">play_circle_outline</mat-icon>
+            <audio #pokemonCri src="assets/audio/{{ pokemon.id }}.mp3"></audio>
         </mat-list-item>
+        <mat-list-item>
+          <mat-chip-list aria-label="Fish Selection">
+            <mat-list class="inline-list">
+              <mat-chip *ngFor="let type of pokemon.types">{{ type }}</mat-chip>
+            </mat-list>
+          </mat-chip-list>
+        </mat-list-item>
+        <mat-list-item>Taille : {{ pokemon.height | number : '1.1' }} m</mat-list-item>
+        <mat-list-item>Poids : {{ pokemon.weight | number : '1.1' }} kg</mat-list-item>
       </mat-list>
-    </mat-chip-list>
-    <p>Taille : {{ pokemon.height }} m</p>
-    <p>Poids : {{ pokemon.weight }} kg</p>
-    </div>
-  </mat-grid-tile>
-  <mat-grid-tile [colspan]="2">
-    <p>{{ pokemon.description }}</p>
-  </mat-grid-tile>
-</mat-grid-list>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2">
+      <p>{{ pokemon.description }}</p>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
 
-<button class="backToPokedex" (click)="goBack()">Pokedex</button>
+<!--<button class="backToPokedex" (click)="goBack()">Pokedex</button>-->

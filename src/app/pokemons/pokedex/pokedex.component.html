@@ -1,0 +1,14 @@
+<button class="pokedex" [routerLink]="['/team']" mat-button>EQUIPE</button>
+
+<mat-sidenav-container class="container" autosize>
+  <mat-sidenav class="liste" mode="side" disableClose opened>
+    <pkx-pokemon-list (selectedPokemonId)="onGetPokemonId($event)"></pkx-pokemon-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="details">
+    <pkx-pokemon-detail [idPokemonReceived]="pokemonIdReceived"></pkx-pokemon-detail>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+
